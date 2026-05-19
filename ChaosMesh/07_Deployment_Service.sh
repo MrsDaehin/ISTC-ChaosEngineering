@@ -4,3 +4,6 @@ kubectl apply -f web-show-deployment.yaml && kubectl apply -f web-show-service.y
 # we can scale it to more replicas
 kubectl apply -f podtato-head-web-app.yaml
 kubectl scale deployments/helloservice --replicas=2 -n demospace
+
+ # deploy cadvisor to monitor the resource usage of the cluster
+kubectl apply -f cadvisor.yaml
