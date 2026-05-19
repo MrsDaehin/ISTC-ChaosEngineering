@@ -1,0 +1,21 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: Schedule
+metadata:
+  name: resource-stress-example
+spec:
+  schedule: '@every 15s'
+  type: StressChaos
+  historyLimit: 5
+  concurrencyPolicy: Forbid
+  stressChaos:
+    mode: all
+    duration: 10s
+    selector:
+      namespaces:
+        - cadvisor
+      labelSelectors:
+        'app': 'cadvisor'
+    stressors:
+      cpu:
+        load: 100
+        workers: 20
