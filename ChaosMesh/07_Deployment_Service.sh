@@ -7,3 +7,6 @@ kubectl scale deployments/helloservice --replicas=2 -n demospace
 
  # deploy cadvisor to monitor the resource usage of the cluster
 kubectl apply -f cadvisor.yaml
+
+# check the daemonset and the service
+kubectl get daemonset -n cadvisor
