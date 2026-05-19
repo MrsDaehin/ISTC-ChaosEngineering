@@ -1,0 +1,17 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: Schedule
+metadata:
+  name: web-show-pod-failure
+spec:
+  schedule: '@every 10s'
+  type: PodChaos
+  historyLimit: 5
+  concurrencyPolicy: Forbid
+  podChaos:
+    action: pod-failure
+    mode: one
+    selector:
+      namespaces:
+      - default
+      labelSelectors:
+        app: web-show
